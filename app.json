@@ -1,0 +1,25 @@
+{
+	"name" : "Platform Event Inserter",
+	"description": "Publicly accessible API for inserting a platform event.  Originally built to simplify integration with a flic button's internet request option",
+	"keywords": [
+		"salesforce",
+		"platform event",
+		"flic"
+	],
+	"repository": "https://github.com/mshanemc/platform-event-flic",
+	"env": {
+		"SFDC_USERNAME": {
+			"description": "Salesforce username of the org platform events should go to"
+		},
+		"SFDC_PASSWORD": {
+			"description": "Password for SFDC_USERNAME"
+		},
+		"EVENT_API_NAME": {
+			"description": "API name of the event to create, ending with __e"
+		},
+		"EVENT_JSON": {
+			"description": "JSON for the fields on the event",
+			"value" : "{\"Field__c\" : \"Value\"}"
+		}
+	}
+}
