@@ -7,9 +7,9 @@ const conn = new jsforce.Connection();
 
 conn.login(process.env.SFDC_USERNAME, process.env.SFDC_PASSWORD, function (err, res) {
   if (err) {
-    logger.error(err);
+    console.log(err);
   } else {
-    logger.debug(res);
+    console.log(res);
   }
 });
 
