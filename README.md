@@ -14,6 +14,7 @@ This is a trivial heroku>node>express app that listens for requests and sends a 
 ### requests
 
 send them as GET to `/events`
+
 you can verify the app is up successfully by GET `/`
 
 ### security
