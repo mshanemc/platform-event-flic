@@ -1,6 +1,6 @@
 {
 	"name" : "Platform Event Inserter",
-	"description": "Publicly accessible API for inserting a platform event.  Originally built to simplify integration with a flic button's internet request option",
+	"description": "Publicly accessible API for inserting a platform event. Built to use a flic button's internet request option",
 	"keywords": [
 		"salesforce",
 		"platform event",
