@@ -18,9 +18,39 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Platform Event Generator' });
 });
 
-// post an empty body the the /events endpoint.  Event is defined in config properties
+// the original version
 router.get('/events', function(req, res){
   conn.sobject(process.env.EVENT_API_NAME).create(JSON.parse(process.env.EVENT_JSON), function (err, ret) {
+    if (err) {
+      return logger.error(err);
+      res.send(err);
+    } else if (!ret.success) {
+      return logger.error(ret);
+      res.send(ret);
+    } else {
+      res.send(ret);
+    }
+  });
+})
+
+// for the double-click event
+router.get('/doubleclick', function (req, res) {
+  conn.sobject(process.env.DOUBLECLICK_EVENT_API_NAME).create(JSON.parse(process.env.DOUBLECLICK_JSON), function (err, ret) {
+    if (err) {
+      return logger.error(err);
+      res.send(err);
+    } else if (!ret.success) {
+      return logger.error(ret);
+      res.send(ret);
+    } else {
+      res.send(ret);
+    }
+  });
+})
+
+// for the press-and-hold event
+router.get('/hold', function (req, res) {
+  conn.sobject(process.env.HOLD_EVENT_API_NAME).create(JSON.parse(process.env.HOLD_JSON), function (err, ret) {
     if (err) {
       return logger.error(err);
       res.send(err);
