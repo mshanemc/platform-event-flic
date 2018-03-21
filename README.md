@@ -8,12 +8,12 @@ This is a trivial heroku>node>express app that listens for requests and sends a 
 
 * `SFDC_USERNAME` a user who has perms to create the event in some org
 * `SFDC_PASSWORD` is your password, and optionally a security token appended to it
-* `EVENT_API_NAME` example: Ride_Completed__e
-* `EVENT_JSON` example: {"Weather__c":"Snow"}
+* `EVENT_API_NAME` example: Ride_Completed__e (there's also `DOUBLE_CLICK_API_NAME` and `HOLD_API_NAME` for those events)
+* `EVENT_JSON` example: {"Weather__c":"Snow"} (there's also `DOUBLE_CLICK_EVENT_JSON` and `HOLD_EVENT_JSON` for those events)
 
 ### requests
 
-send them as GET to `/events`
+send them as GET to `/events`, `/doubleclick`, and/or `/hold`
 
 you can verify the app is up successfully by GET `/`
 
