@@ -10,7 +10,7 @@ This is a trivial heroku>node>express app that listens for requests and sends a 
 * `SFDC_PASSWORD` is your password, and optionally a security token appended to it
 * `EVENT_API_NAME` example: Ride_Completed__e (there's also `DOUBLECLICK_EVENT_API_NAME` and `HOLD_EVENT_API_NAME` for those events)
 * `EVENT_JSON` example: {"Weather__c":"Snow"} (there's also `DOUBLECLICK_JSON` and `HOLD_JSON` for those events)
-
+* `environment` set to `test` if you're sending events to a sandbox or scratch org
 ### requests
 
 send them as GET to `/events`, `/doubleclick`, and/or `/hold` when you set them up in the flic app

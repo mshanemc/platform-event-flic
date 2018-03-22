@@ -9,6 +9,7 @@ const jsforce = require('jsforce');
 const loginInfo = {};
 if (process.env.enviroment === 'test'){
   loginInfo.loginUrl = 'https://test.salesforce.com';
+  logger.log('using test.salesforce.com for login');
 }
 
 const conn = new jsforce.Connection(loginInfo);
