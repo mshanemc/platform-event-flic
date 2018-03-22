@@ -7,8 +7,10 @@ var bodyParser = require('body-parser');
 const jsforce = require('jsforce');
 
 const loginInfo = {};
-if (process.env.enviroment === 'test'){
+if (process.env.environment === 'test'){
   loginInfo.loginUrl = 'https://test.salesforce.com';
+  console.log('using test.salesforce.com for login');
+  console.log(loginInfo);
 }
 
 const conn = new jsforce.Connection(loginInfo);
