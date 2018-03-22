@@ -5,7 +5,13 @@ const logger = require('heroku-logger');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const jsforce = require('jsforce');
-const conn = new jsforce.Connection();
+
+const loginInfo = {};
+if (process.env.enviroment === 'test'){
+  loginInfo.loginUrl = 'https://test.salesforce.com';
+}
+
+const conn = new jsforce.Connection(loginInfo);
 
 conn.login(process.env.SFDC_USERNAME, process.env.SFDC_PASSWORD, function (err, res) {
   if (err) {
