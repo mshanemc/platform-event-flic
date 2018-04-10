@@ -8,6 +8,10 @@
 	],
 	"repository": "https://github.com/mshanemc/platform-event-flic",
 	"env": {
+		"environment": {
+			"description": "test for sandboxes, scratch orgs.  Leave blacnk, delete, or put anything else for production",
+			"value" : "test"
+		},
 		"SFDC_USERNAME": {
 			"description": "Salesforce username of the org platform events should go to"
 		},

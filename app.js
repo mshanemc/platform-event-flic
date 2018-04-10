@@ -5,7 +5,15 @@ const logger = require('heroku-logger');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const jsforce = require('jsforce');
-const conn = new jsforce.Connection();
+
+const loginInfo = {};
+if (process.env.environment === 'test'){
+  loginInfo.loginUrl = 'https://test.salesforce.com';
+  console.log('using test.salesforce.com for login');
+  console.log(loginInfo);
+}
+
+const conn = new jsforce.Connection(loginInfo);
 
 conn.login(process.env.SFDC_USERNAME, process.env.SFDC_PASSWORD, function (err, res) {
   if (err) {
@@ -31,43 +39,43 @@ app.get('/', function (req, res, next) {
 app.get('/events', function (req, res, next) {
   conn.sobject(process.env.EVENT_API_NAME).create(JSON.parse(process.env.EVENT_JSON), function (err, ret) {
     if (err) {
-      return logger.error(err);
-      res.send(err);
+      logger.error(err);
+      return res.send(err);
     } else if (!ret.success) {
-      return logger.error(ret);
-      res.send(ret);
+      logger.error(ret);
+      return res.send(ret);
     } else {
-      res.send(ret);
+      return res.send(ret);
     }
   });
 })
 
 // for the double-click event
-router.get('/doubleclick', function (req, res) {
+app.get('/doubleclick', function (req, res) {
   conn.sobject(process.env.DOUBLECLICK_EVENT_API_NAME).create(JSON.parse(process.env.DOUBLECLICK_JSON), function (err, ret) {
     if (err) {
-      return logger.error(err);
-      res.send(err);
+      logger.error(err);
+      return res.send(err);
     } else if (!ret.success) {
-      return logger.error(ret);
-      res.send(ret);
+      logger.error(ret);
+      return res.send(ret);
     } else {
-      res.send(ret);
+      return res.send(ret);
     }
   });
 })
 
 // for the press-and-hold event
-router.get('/hold', function (req, res) {
+app.get('/hold', function (req, res) {
   conn.sobject(process.env.HOLD_EVENT_API_NAME).create(JSON.parse(process.env.HOLD_JSON), function (err, ret) {
     if (err) {
-      return logger.error(err);
-      res.send(err);
+      logger.error(err);
+      return res.send(err);
     } else if (!ret.success) {
-      return logger.error(ret);
-      res.send(ret);
+      logger.error(ret);
+      return res.send(ret);
     } else {
-      res.send(ret);
+      return res.send(ret);
     }
   });
 })
