@@ -12,6 +12,12 @@
 			"description": "test for sandboxes, scratch orgs.  Leave blacnk, delete, or put anything else for production",
 			"value" : "test"
 		},
+		"SFDC_APP_ID": {
+			"description": "Connected App ID aka Consumer Key"
+		},
+		"SFDC_APP_SECRET": {
+			"description": "Connected App Secret aka Consumer Secret"
+		},
 		"SFDC_USERNAME": {
 			"description": "Salesforce username of the org platform events should go to"
 		},

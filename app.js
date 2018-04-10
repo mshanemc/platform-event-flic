@@ -7,13 +7,21 @@ var bodyParser = require('body-parser');
 const jsforce = require('jsforce');
 
 const loginInfo = {};
+const oauth2 = {
+  oauth2: {
+    clientId: process.env.SFDC_APP_ID,
+    clientSecret: process.env.SFDC_APP_SECRET,
+    redirectUri: 'https://login.salesforce.com/services/oauth2/callback'
+  }
+}
 if (process.env.environment === 'test'){
-  loginInfo.loginUrl = 'https://test.salesforce.com';
+  oauth2.loginUrl = 'https://test.salesforce.com';
+  oauth2.redirectUri = 'https://test.salesforce.com/services/oauth2/callback';
   console.log('using test.salesforce.com for login');
   console.log(loginInfo);
 }
 
-const conn = new jsforce.Connection(loginInfo);
+const conn = new jsforce.Connection({oauth2:oauth2});
 
 conn.login(process.env.SFDC_USERNAME, process.env.SFDC_PASSWORD, function (err, res) {
   if (err) {
