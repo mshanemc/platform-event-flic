@@ -22,18 +22,22 @@
 			"value" : "{\"Field__c\" : \"Value\"}"
 		},
 		"DOUBLECLICK_EVENT_API_NAME": {
-			"description": "API name of the event to create, ending with __e for double-click"
+			"description": "API name of the event to create, ending with __e for double-click",
+			"required" : false
 		},
 		"DOUBLECLICK_JSON": {
 			"description": "JSON for the fields on the event for double-click",
-			"value": "{\"Field__c\" : \"Value\"}"
+			"value": "{\"Field__c\" : \"Value\"}",
+			"required": false
 		},
 		"HOLD_EVENT_API_NAME": {
-			"description": "API name of the event to create from hold, ending with __e"
+			"description": "API name of the event to create from hold, ending with __e",
+			"required": false
 		},
 		"HOLD_JSON": {
 			"description": "JSON for the fields on the hold event",
-			"value": "{\"Field__c\" : \"Value\"}"
+			"value": "{\"Field__c\" : \"Value\"}",
+			"required": false
 		}
 	}
 }
